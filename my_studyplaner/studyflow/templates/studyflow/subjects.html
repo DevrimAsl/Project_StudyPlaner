@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StudyFlow – Fächer</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; background: #f5f5f5; }
+        .box { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: auto; }
+        .subject {
+            padding: 12px;
+            border-radius: 6px;
+            margin: 8px 0;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Meine Fächer</h1>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Fachname (z.B. Mathe)" required>
+            <input type="color" name="color">
+            <button type="submit">Hinzufügen</button>
+        </form>
+
+        <hr>
+
+        {% for s in subjects %}
+            <div class="subject" style="background: {{ s.color|default:'#888' }}">
+                📁 {{ s.name }}
+            </div>
+        {% empty %}
+            <p>Noch keine Fächer angelegt.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
