@@ -1,1 +1,1 @@
-# MovieWatcher
+# StudyPlaner
