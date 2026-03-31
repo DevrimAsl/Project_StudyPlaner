@@ -49,7 +49,7 @@ def add_subject(request):
         Subject.objects.create(name=name, user=request.user)
         return redirect('dashboard')
 
-    return render(request, 'add_subject.html')
+    return render(request, 'addSubject.html')
 
 
 # Aufgabe erstellen
@@ -67,7 +67,7 @@ def add_task(request):
         )
         return redirect('dashboard')
 
-    return render(request, 'add_task.html', {'subjects': subjects})
+    return render(request, 'addTask.html', {'subjects': subjects})
 
 
 # Aufgabe erledigt
