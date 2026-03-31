@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Willkommen beim StudyPlanner</h2>
+
+<p>Organisiere deine Lernaufgaben einfach und effektiv.</p>
+
+{% if not user.is_authenticated %}
+    <a href="/login/">➡️ Jetzt einloggen</a>
+{% else %}
+    <p>Du bist eingeloggt 🎉</p>
+{% endif %}
+
+{% endblock %}
