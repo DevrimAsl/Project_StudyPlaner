@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+<p>Fortschritt: {{ progress }}%</p>
+
+<a href="/add-subject/">Fach hinzufügen</a>
+<a href="/add-task/">Aufgabe hinzufügen</a>
+
+<h3>Aufgaben</h3>
+
+{% for task in tasks %}
+    <p>
+        {{ task.title }} ({{ task.subject }}) - {{ task.due_date }}
+
+        {% if task.completed %}
+            ✅
+        {% else %}
+            <a href="/complete/{{ task.id }}/">Erledigt</a>
+        {% endif %}
+    </p>
+{% endfor %}
+
+{% endblock %}
