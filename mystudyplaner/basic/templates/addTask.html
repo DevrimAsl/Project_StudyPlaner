@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Aufgabe hinzufügen</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    <input type="text" name="title" placeholder="Titel"><br>
+    
+    <select name="subject">
+        {% for subject in subjects %}
+            <option value="{{ subject.id }}">{{ subject.name }}</option>
+        {% endfor %}
+    </select><br>
+
+    <input type="date" name="due_date"><br>
+    <input type="number" name="study_time" placeholder="Minuten"><br>
+
+    <button type="submit">Speichern</button>
+</form>
+
+{% endblock %}
