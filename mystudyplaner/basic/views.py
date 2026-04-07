@@ -4,9 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Task, Subject
 
 # Home
-def home(request):
-    return render(request, 'home.html')
-
+def base(request):
+    return render(request, 'base.html')
 
 # Registrierung
 def register(request):
@@ -77,3 +76,21 @@ def complete_task(request, task_id):
     task.completed = True
     task.save()
     return redirect('dashboard')
+
+
+from django.contrib.auth import authenticate, login
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect("dashboard")
+        else:
+            return render(request, "login.html", {"error": "Login fehlgeschlagen"})
+
+    return render(request, "login.html")

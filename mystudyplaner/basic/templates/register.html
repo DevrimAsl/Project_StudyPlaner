@@ -1,12 +1,22 @@
-{% extends 'base.html' %}
-
-{% block content %}
 <h2>Registrieren</h2>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Registrieren</button>
-</form>
+<input type="text" id="newUser" placeholder="Username">
+<input type="password" id="newPass" placeholder="Password">
 
-{% endblock %}
+<button onclick="register()">Account erstellen</button>
+
+<script>
+function register() {
+    const user = document.getElementById("newUser").value;
+
+    if (user) {
+        // Hier würdest du normalerweise die Daten speichern (Backend!)
+        alert("Registrierung erfolgreich!");
+
+        // zurück zur Login-Seite
+        window.location.href = "login.html";
+    } else {
+        alert("Bitte alle Felder ausfüllen");
+    }
+}
+</script>
